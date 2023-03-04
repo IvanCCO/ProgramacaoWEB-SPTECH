@@ -15,7 +15,6 @@ public class HeroiController {
 
     @GetMapping
     public List<Heroi> listarHerois(){
-        heroisList.add(new Heroi("Flash", "COrrer", 18, 12.2, true));
         return heroisList;
     }
 

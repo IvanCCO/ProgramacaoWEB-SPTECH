@@ -11,12 +11,24 @@ public class Main {
 
         int teste = in.nextInt();
 
+        for (int i=0; i<teste; i++){
+
+            String a = in.next();
+            String b = in.next();
+
+            if(a.indexOf(b, a.length() - b.length()) >= 0){
+
+                System.out.println("encaixa");
+
+            }else{
+                System.out.println("nao encaixa");
+            }
 
 
+        }
 
         }
 
 
 
     }
-}
