@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -35,35 +36,36 @@ public class UsuarioController {
             @PathVariable String usuario,
             @PathVariable String senha
     ){
-        for(Usuario user: usuarioList){
-            if(user.getUsuario().equalsIgnoreCase(usuario) && user.getSenha().equals(senha)){
-                user.setAutentificado(true);
-                return new UsuarioDto(user);
-                }
-            }
-        return null;
+        Optional<Usuario> first = usuarioList.stream()
+                .filter(u -> u.getUsuario().equalsIgnoreCase(usuario) && u.getSenha().equals(senha))
+                .findFirst();
+        if (first.isPresent()) {
+            Usuario usr = first.get();
+            usr.setAutentificado(true);
+            return new UsuarioDto(usr);
+        } else {
+            return null;
+        }
+
     }
 
     @DeleteMapping("/autentificacao/{usuario}")
     public String logoffUsuario(
             @PathVariable String usuario
     ){
-
-        for(Usuario user:usuarioList){
-
-            if(user.getUsuario().equalsIgnoreCase(usuario)){
-
-                if(user.isAutentificado()){
-                    user.setAutentificado(false);
-                            return "Logoff do usuário " + user.getNome() + " concluido";
-                    }
-                return "Usuário " + user.getNome() + " não está autentificado";
-                }
-            }
-
-        return "Usuário " + usuario + " não encontrado";
-
+        Optional<Usuario> first= usuarioList.stream()
+                .filter(u -> u.getUsuario().equals(usuario))
+                .findFirst();
+        if(first.isPresent()){
+            Usuario usr = first.get();
+            if(usr.isAutentificado()){
+                usr.setAutentificado(false);
+                return "Logoff do usuário " + usr.getNome() + " concluido";
+            }else return "Usuário " + usr.getNome() + " não está autentificado";
+        }
+        return "Usuário " + usuario + " não encontrado ";
     }
+
 
     // Método GetUsuários com senha Fraca
     @GetMapping("low-pass")
