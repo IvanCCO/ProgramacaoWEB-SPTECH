@@ -1,0 +1,13 @@
+
+r
+java:S1149#"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(¡íÓŠøÿÿÿÿ8œäÀÿ0
+Z	java:S1062"9Replace this use of System.out or System.err by a logger.(›ôÄ‘ûÿÿÿÿ8ŸäÀÿ0
+Z	java:S106<"9Replace this use of System.out or System.err by a logger.(•İ™Îüÿÿÿÿ8 äÀÿ0
+L
+java:S1481K"*Remove this unused "vetor" local variable.(õÒ«šúÿÿÿÿ8 äÀÿ0
+Z	java:S106P"9Replace this use of System.out or System.err by a logger.(¢†î»ùÿÿÿÿ8 äÀÿ0
+]	java:S125M"<This block of commented-out lines of code should be removed.(Çç«ûøÿÿÿÿ8¡äÀÿ0
+O
+java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ8¡äÀÿ0
+P
+java:S1128".Remove this unused import 'java.util.Scanner'.(ÒÜÅ¸úÿÿÿÿ8¡äÀÿ0
